@@ -3,314 +3,540 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy - Compose R.A Studio</title>
+  <title>Privacy Policy – Status Downloader</title>
+  <meta name="description" content="Privacy policy of the Status Downloader Android app by Compose R.A Studio: what stays on your device, what Google services collect, ad consent and your rights." />
+  <meta name="author" content="Compose R.A Studio" />
+  <meta name="color-scheme" content="light dark" />
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg: #f4f6fa;
+      --surface: #ffffff;
+      --surface-2: #eef2f7;
+      --text: #1a2130;
+      --muted: #545e70;
+      --border: #dde3ec;
+      --accent: #0b7a5f;
+      --accent-soft: #e2f3ed;
+      --link: #0a63c2;
+      --shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 6px 24px rgba(16, 24, 40, 0.06);
     }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0e131a;
+        --surface: #151c26;
+        --surface-2: #1c2531;
+        --text: #e6ebf2;
+        --muted: #a2adbf;
+        --border: #283242;
+        --accent: #4fd1a5;
+        --accent-soft: #15322a;
+        --link: #7ab6ff;
+        --shadow: none;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0e131a;
+      --surface: #151c26;
+      --surface-2: #1c2531;
+      --text: #e6ebf2;
+      --muted: #a2adbf;
+      --border: #283242;
+      --accent: #4fd1a5;
+      --accent-soft: #15322a;
+      --link: #7ab6ff;
+      --shadow: none;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; scroll-padding-top: 76px; }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f9;
-      color: #333;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16.5px;
       line-height: 1.7;
-      padding: 20px;
     }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: #ffffff;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    .wrap { max-width: 820px; margin: 0 auto; padding: 0 16px; }
+
+    /* Top bar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: saturate(160%) blur(10px);
+      -webkit-backdrop-filter: saturate(160%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 60px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      min-width: 0;
+    }
+
+    .brand span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .brand svg { flex: none; color: var(--accent); }
+
+    a:focus-visible,
+    summary:focus-visible {
+      outline: 2px solid var(--link);
+      outline-offset: 2px;
+    }
+
+    /* Document */
+    main { padding: 32px 0 24px; }
+
+    .doc-head { margin-bottom: 24px; }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
     }
 
     h1 {
-      text-align: center;
-      color: #111827;
-      margin-bottom: 30px;
-      font-size: 2.2rem;
+      margin: 0 0 10px;
+      font-size: clamp(1.9rem, 5vw, 2.5rem);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
     }
+
+    .meta { margin: 0; color: var(--muted); font-size: 15px; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .summary { padding: 22px 24px 8px; margin-bottom: 16px; }
+
+    .summary h2 { margin-top: 0; font-size: 1.15rem; }
+
+    .points { list-style: none; margin: 0; padding: 0; }
+
+    .points li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 14px;
+    }
+
+    .points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.45em;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent-soft)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%230b7a5f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E")
+        center / 12px no-repeat;
+    }
+
+    .toc { padding: 4px 24px; margin-bottom: 8px; }
+
+    .toc summary {
+      cursor: pointer;
+      font-weight: 600;
+      padding: 12px 0;
+    }
+
+    .toc ol { margin: 0 0 14px; padding-left: 22px; columns: 2; column-gap: 32px; }
+
+    .toc li { break-inside: avoid; margin-bottom: 4px; }
+
+    .content { padding: 8px 28px 28px; }
+
+    section { scroll-margin-top: 76px; }
 
     h2 {
-      color: #1f2937;
-      margin-top: 35px;
-      margin-bottom: 15px;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
+      line-height: 1.3;
+      margin: 36px 0 12px;
     }
 
-    p {
-      margin-bottom: 15px;
-      color: #4b5563;
+    .content > section:first-child h2 { margin-top: 24px; }
+
+    h3 {
+      font-size: 1.05rem;
+      margin: 24px 0 6px;
     }
 
-    ul {
-      margin-left: 20px;
-      margin-bottom: 20px;
+    p { margin: 0 0 14px; }
+
+    ul { margin: 0 0 16px; padding-left: 22px; }
+
+    li { margin-bottom: 8px; }
+
+    a { color: var(--link); text-decoration: none; }
+
+    a:hover { text-decoration: underline; }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 0.9em;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1px 6px;
+      overflow-wrap: anywhere;
     }
 
-    li {
-      margin-bottom: 10px;
-      color: #4b5563;
+    .path {
+      font-weight: 600;
+      white-space: nowrap;
     }
 
-    a {
-      color: #2563eb;
-      text-decoration: none;
+    .services { display: grid; gap: 12px; margin: 16px 0 8px; }
+
+    .service {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px 6px;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
+    .service h3 { margin: 0 0 2px; }
 
-    .footer {
-      margin-top: 40px;
-      text-align: center;
-      color: #6b7280;
+    .service .role {
+      margin: 0 0 10px;
+      color: var(--accent);
       font-size: 14px;
+      font-weight: 600;
     }
 
-    @media (max-width: 768px) {
-      .container {
-        padding: 25px;
-      }
+    .service dl { margin: 0; }
 
-      h1 {
-        font-size: 1.8rem;
-      }
+    .service dt { font-weight: 600; font-size: 14.5px; }
 
-      h2 {
-        font-size: 1.2rem;
-      }
+    .service dd { margin: 0 0 10px; color: var(--muted); }
 
-      body {
-        padding: 12px;
-      }
+    .note {
+      background: var(--accent-soft);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin: 0 0 16px;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+      padding: 8px 0 40px;
+    }
+
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      main { padding-top: 24px; }
+      .summary, .toc { padding-left: 18px; padding-right: 18px; }
+      .content { padding: 4px 18px 22px; }
+      .toc ol { columns: 1; }
+      .path { white-space: normal; }
+      .brand span { font-size: 14px; }
+    }
+
+    @media print {
+      .topbar, .toc { display: none; }
+      body { background: #fff; color: #000; }
+      .card, .service { box-shadow: none; border-color: #ccc; }
+      a { color: #000; text-decoration: underline; }
     }
   </style>
+
 </head>
 
 <body>
-
-  <div class="container">
-
-    <h1>Privacy Policy</h1>
-
-    <p>
-      Compose R.A Studio built the Downloader Status app as a free application.
-      This SERVICE is provided by Compose R.A Studio at no cost and is intended for use as is.
-    </p>
-
-    <p>
-      This page is used to inform visitors regarding our policies with the collection,
-      use, and disclosure of Personal Information if anyone decides to use our Service.
-    </p>
-
-    <p>
-      If you choose to use our Service, then you agree to the collection and use
-      of information in relation to this policy. The Personal Information that
-      we collect is used for providing and improving the Service. We will not use
-      or share your information with anyone except as described in this Privacy Policy.
-    </p>
-
-    <p>
-      The terms used in this Privacy Policy have the same meanings as in our
-      Terms and Conditions, accessible at Downloader Status, unless otherwise
-      defined in this Privacy Policy.
-    </p>
-
-    <h2>Information Collection and Use</h2>
-
-    <p>
-      For a better experience while using our Service, we may require you
-      to provide certain personally identifiable information. The information
-      requested will remain on your device and is not collected by us in any way.
-    </p>
-
-    <p>
-      The app does use third-party services that may collect information
-      used to identify you.
-    </p>
-
-    <h2>Third-Party Service Providers</h2>
-
-    <ul>
-      <li>
-        <a href="https://policies.google.com/privacy" target="_blank">
-          Google Play Services
-        </a>
-      </li>
-
-      <li>
-        <a href="https://support.google.com/admob/answer/6128543" target="_blank">
-          AdMob
-        </a>
-      </li>
-
-      <li>
-        <a href="https://firebase.google.com/policies/analytics" target="_blank">
-          Google Analytics for Firebase
-        </a>
-      </li>
-
-      <li>
-        <a href="https://firebase.google.com/support/privacy" target="_blank">
-          Firebase Crashlytics
-        </a>
-      </li>
-    </ul>
-
-    <h2>Log Data</h2>
-
-    <p>
-      We want to inform you that whenever you use our Service,
-      in case of an error in the app, we collect data and information
-      (through third-party products) on your phone called Log Data.
-    </p>
-
-    <p>
-      This Log Data may include:
-    </p>
-
-    <ul>
-      <li>Device IP address</li>
-      <li>Device name</li>
-      <li>Operating system version</li>
-      <li>App configuration while using the Service</li>
-      <li>Time and date of your use of the Service</li>
-      <li>Other statistics</li>
-    </ul>
-
-    <h2>Cookies</h2>
-
-    <p>
-      Cookies are files with a small amount of data that are commonly used
-      as anonymous unique identifiers. These are sent to your browser from
-      the websites that you visit and are stored on your device's internal memory.
-    </p>
-
-    <p>
-      This Service does not use these “cookies” explicitly. However,
-      the app may use third-party code and libraries that use cookies
-      to collect information and improve their services.
-    </p>
-
-    <p>
-      You have the option to accept or refuse these cookies and know when
-      a cookie is being sent to your device. If you choose to refuse our cookies,
-      you may not be able to use some portions of this Service.
-    </p>
-
-    <h2>Service Providers</h2>
-
-    <p>
-      We may employ third-party companies and individuals for the following reasons:
-    </p>
-
-    <ul>
-      <li>To facilitate our Service</li>
-      <li>To provide the Service on our behalf</li>
-      <li>To perform Service-related services</li>
-      <li>To assist us in analyzing how our Service is used</li>
-    </ul>
-
-    <p>
-      These third parties may have access to your Personal Information
-      to perform the tasks assigned to them on our behalf. However,
-      they are obligated not to disclose or use the information
-      for any other purpose.
-    </p>
-
-    <h2>Security</h2>
-
-    <p>
-      We value your trust in providing us your Personal Information.
-      Therefore, we strive to use commercially acceptable means
-      of protecting it.
-    </p>
-
-    <p>
-      However, remember that no method of transmission over the Internet
-      or electronic storage is 100% secure and reliable,
-      and we cannot guarantee its absolute security.
-    </p>
-
-    <h2>Links to Other Sites</h2>
-
-    <p>
-      This Service may contain links to external websites.
-      If you click on a third-party link, you will be directed to that site.
-    </p>
-
-    <p>
-      Please note that these external sites are not operated by us.
-      Therefore, we strongly advise you to review the Privacy Policy
-      of these websites.
-    </p>
-
-    <p>
-      We have no control over and assume no responsibility for the content,
-      privacy policies, or practices of any third-party sites or services.
-    </p>
-
-    <h2>Children’s Privacy</h2>
-
-    <p>
-      These Services are not directed to anyone under the age of 13.
-    </p>
-
-    <p>
-      We do not knowingly collect personally identifiable information
-      from children under 13 years of age.
-    </p>
-
-    <p>
-      If we discover that a child under 13 has provided us with personal information,
-      we immediately delete it from our servers.
-    </p>
-
-    <p>
-      If you are a parent or guardian and you are aware that your child
-      has provided us with personal information, please contact us
-      so that we can take the necessary actions.
-    </p>
-
-    <h2>Changes to This Privacy Policy</h2>
-
-    <p>
-      We may update our Privacy Policy from time to time.
-      Therefore, you are advised to review this page periodically
-      for any changes.
-    </p>
-
-    <p>
-      We will notify you of any changes by posting the new
-      Privacy Policy on this page.
-    </p>
-
-    <h2>Contact Us</h2>
-
-    <p>
-      If you have any questions or suggestions about our Privacy Policy,
-      do not hesitate to contact us at:
-    </p>
-
-    <p>
-      <strong>Email:</strong>
-      <a href="mailto:composerastudio@gmail.com">
-        composerastudio@gmail.com
-      </a>
-    </p>
-
-    <div class="footer">
-      © 2026 Compose R.A Studio - All Rights Reserved
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Zm-1.2 14.2-3.5-3.5 1.4-1.4 2.1 2.1 4.9-4.9 1.4 1.4-6.3 6.3Z"/>
+        </svg>
+        <span>Compose R.A Studio</span>
+      </div>
     </div>
+  </header>
 
-  </div>
+  <main class="wrap">
+
+    <article>
+      <header class="doc-head">
+        <p class="eyebrow">Status Downloader · Android app</p>
+        <h1>Privacy Policy</h1>
+        <p class="meta">
+          Developer: <strong>Compose R.A Studio</strong> ·
+          Last updated: <time datetime="2026-10-17">October 17, 2026</time>
+        </p>
+      </header>
+
+      <section class="card summary" aria-labelledby="summary">
+        <h2 id="summary">The short version</h2>
+        <ul class="points">
+          <li><strong>No account, no servers of our own.</strong> You never sign up, and we never receive your statuses, photos or videos.</li>
+          <li><strong>Your statuses stay on your phone.</strong> The app reads only the folder you give it access to, and saves files to your gallery only when you ask it to.</li>
+          <li><strong>Ads come from Google AdMob.</strong> Where the law requires it, we ask for your consent first, and you can change your choice at any time in <span class="path">Settings → Privacy → Ad privacy options</span>.</li>
+          <li><strong>Google Firebase</strong> receives usage statistics and crash reports, linked to random identifiers rather than to your name.</li>
+          <li><strong>Premium removes ads.</strong> Payments are handled entirely by Google Play.</li>
+        </ul>
+      </section>
+
+      <details class="card toc">
+        <summary>Contents</summary>
+        <ol>
+          <li><a href="#who">Who we are</a></li>
+          <li><a href="#device">Information that stays on your device</a></li>
+          <li><a href="#third">Information collected by third-party services</a></li>
+          <li><a href="#ads">Advertising, consent and your choices</a></li>
+          <li><a href="#permissions">Permissions the app uses</a></li>
+          <li><a href="#legal">Legal bases (EEA, UK and Switzerland)</a></li>
+          <li><a href="#retention">How long information is kept</a></li>
+          <li><a href="#sharing">Sharing and sale of information</a></li>
+          <li><a href="#transfers">International transfers</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#rights">Your rights</a></li>
+          <li><a href="#children">Children</a></li>
+          <li><a href="#support">When you contact us</a></li>
+          <li><a href="#changes">Changes to this policy</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ol>
+      </details>
+
+      <div class="card content">
+        <section id="who">
+          <h2>1. Who we are</h2>
+          <p>This policy explains how the <strong>Status Downloader</strong> app for Android (package <code>com.composerastudio.statusdownloader</code>, “the app”) handles information. The app is developed and published by <strong>Compose R.A Studio</strong> (“we”, “us”), which is responsible for the processing described here.</p>
+          <p>The app is free to download. Its free version shows ads, and an optional paid Premium upgrade removes them.</p>
+          <p>Status Downloader is an independent app. It is not affiliated with, endorsed by or sponsored by WhatsApp LLC or Meta Platforms, Inc.</p>
+        </section>
+
+        <section id="device">
+          <h2>2. Information that stays on your device</h2>
+          <p>The app has no user accounts, and we do not run servers that receive your content. Everything in this section is processed only on your device and is never sent to us.</p>
+
+          <h3>Status files and folder access</h3>
+          <p>To show the statuses you have already viewed in WhatsApp or WhatsApp Business, the app needs access to the folder where WhatsApp keeps them on your device.</p>
+          <ul>
+            <li>On Android 11 and later, you choose that folder yourself in Android’s system folder picker. The app can open only that folder, and you can revoke access at any time in <span class="path">Settings → Folders</span>.</li>
+            <li>On Android 10 and earlier, the app asks for the storage permission, which it requests only on those versions.</li>
+          </ul>
+          <p>The app does not access your contacts, chats, messages, call history or location.</p>
+
+          <h3>Saved photos and videos</h3>
+          <p>When you save a status, or when auto-save is on, the app copies it to your gallery: images to <code>Pictures/StatusDownloader</code> and videos to <code>Movies/StatusDownloader</code>. These copies are ordinary files on your device. They stay there until you delete them, even if you uninstall the app.</p>
+
+          <h3>Background checks</h3>
+          <p>If you turn on <em>Notifications</em> or <em>Auto-save</em> in <span class="path">Settings → Automation</span>, the app checks the statuses folder from time to time (about every 15 minutes, as scheduled by Android) to tell you about new statuses or to save them. This check runs entirely on your device, and notifications are created locally, without any push-notification service.</p>
+
+          <h3>Sharing and reposting</h3>
+          <p>When you share or repost a status, the app makes a temporary copy in its private storage and hands it to the app you choose. From then on, that app’s own privacy policy applies. Temporary copies are deleted the next time the app starts.</p>
+
+          <h3>Settings and preferences</h3>
+          <p>The app stores on your device your theme, language and grid preferences; the folder access you granted; your favourites; which statuses you have already been notified about (identified by file name and size); your tutorial progress; counters that limit how often ads appear; and whether Premium is active, so that a paying user never sees an ad while Google Play is still connecting.</p>
+          <p>If Android backup is turned on for your Google account, Android may include these settings in your device backup. That backup is managed by Google under your account settings.</p>
+          <p>You can delete all of this at any time in <span class="path">Android Settings → Apps → Status Downloader → Storage → Clear storage</span>, or by uninstalling the app.</p>
+        </section>
+
+        <section id="third">
+          <h2>3. Information collected by third-party services</h2>
+          <p>The app uses the services below, all provided by Google. They may collect information from your device automatically and process it under their own privacy policies. We do not receive any information from them that identifies you by name.</p>
+
+          <div class="services">
+            <div class="service">
+              <h3>Google AdMob</h3>
+              <p class="role">Advertising · free version only</p>
+              <dl>
+                <dt>May collect</dt>
+                <dd>Your device’s advertising ID, IP address, device and operating-system information (such as model, language and screen size), app information, and how you interact with ads. An approximate location may be inferred from your IP address.</dd>
+                <dt>Used for</dt>
+                <dd>Showing ads, measuring how they perform, limiting how often they appear, and preventing fraud and abuse. Ads are personalised only where your choices and local law allow it. On supported Android versions, ads may also use Android’s Privacy Sandbox features (such as Topics and attribution reporting), which you can control in your Android privacy settings.</dd>
+                <dt>Privacy policy</dt>
+                <dd><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> · <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from apps that use its services</a></dd>
+              </dl>
+            </div>
+
+            <div class="service">
+              <h3>Google User Messaging Platform</h3>
+              <p class="role">Consent management</p>
+              <dl>
+                <dt>May collect</dt>
+                <dd>Device information and your IP address, to find out whether a privacy message applies in your region, plus the choices you make in that message.</dd>
+                <dt>Used for</dt>
+                <dd>Asking for and recording your advertising consent or opt-out. Your choices are stored on your device in industry-standard formats (IAB TCF and GPP) so that ads respect them.</dd>
+                <dt>Privacy policy</dt>
+                <dd><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></dd>
+              </dl>
+            </div>
+
+            <div class="service">
+              <h3>Google Analytics for Firebase</h3>
+              <p class="role">Usage statistics</p>
+              <dl>
+                <dt>May collect</dt>
+                <dd>A random app-instance identifier, device model, operating-system version, language, approximate region (derived from your IP address), app version, how the app was installed, and where permitted the advertising ID, together with automatic usage events such as first open, sessions, in-app purchases and ad impressions.</dd>
+                <dt>Used for</dt>
+                <dd>Understanding in aggregate how the app is used, so that we can fix problems and decide what to improve. We do not set a user ID and do not send any custom personal data.</dd>
+                <dt>Privacy policy</dt>
+                <dd><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy and Security in Firebase</a></dd>
+              </dl>
+            </div>
+
+            <div class="service">
+              <h3>Firebase Crashlytics</h3>
+              <p class="role">Crash reports</p>
+              <dl>
+                <dt>May collect</dt>
+                <dd>When the app crashes: the technical cause of the crash (stack trace), device model, operating-system version, app version, time of the crash and a random installation identifier.</dd>
+                <dt>Used for</dt>
+                <dd>Finding and fixing bugs.</dd>
+                <dt>Privacy policy</dt>
+                <dd><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy and Security in Firebase</a></dd>
+              </dl>
+            </div>
+
+            <div class="service">
+              <h3>Google Play Billing</h3>
+              <p class="role">Premium purchases</p>
+              <dl>
+                <dt>What we receive</dt>
+                <dd>Payments are processed by Google Play, and we never receive your card or payment details. The app only receives confirmation of the purchase (product, purchase token and status) to unlock Premium and to restore it when you reinstall the app.</dd>
+                <dt>Privacy policy</dt>
+                <dd><a href="https://payments.google.com/payments/apis-secure/u/0/get_legal_document?ldo=0&amp;ldt=privacynotice" target="_blank" rel="noopener">Google Payments Privacy Notice</a></dd>
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <section id="ads">
+          <h2>4. Advertising, consent and your choices</h2>
+          <p>The free version shows full-screen ads only after you finish an action, such as saving a status, and never when the app opens.</p>
+
+          <h3>Europe (EEA), United Kingdom and Switzerland</h3>
+          <p>When you open the app, a consent message from Google’s certified consent platform explains how your data is used for advertising and lets you accept, refuse or choose specific purposes and partners. No ads are requested until you have made a choice. If you do not consent to personalised ads, you may still see non-personalised or limited ads, as your choices allow.</p>
+
+          <h3>United States</h3>
+          <p>Some US state privacy laws treat sharing data with advertising partners for targeted advertising as a “sale” or “sharing” of personal information. We do not sell personal information for money. If you live in a state where these laws apply, you can opt out of this sale or sharing for targeted advertising with the option described below.</p>
+
+          <h3>Changing your choices</h3>
+          <p>Where these rules apply, the app shows <span class="path">Settings → Privacy → Ad privacy options</span>. Use it at any time to review or withdraw your consent, or to opt out. Withdrawing consent does not affect processing that took place before you withdrew it.</p>
+          <p>Wherever you are, you can also reset or delete your advertising ID in your device settings (on most devices, <span class="path">Settings → Privacy → Ads</span> or <span class="path">Settings → Google → Ads</span>), and manage how Google personalises ads in <a href="https://myadcenter.google.com/" target="_blank" rel="noopener">My Ad Center</a>.</p>
+
+          <h3>Premium</h3>
+          <p>If you have Premium, the app shows no ads, and when it opens it starts neither the advertising service nor the consent message.</p>
+        </section>
+
+        <section id="permissions">
+          <h2>5. Permissions the app uses</h2>
+          <ul>
+            <li><strong>Folder access or storage</strong> (storage only on Android 10 and earlier): to read status files and save the copies you ask for.</li>
+            <li><strong>Notifications</strong> (optional): to tell you about new statuses and about files saved automatically.</li>
+            <li><strong>Internet and network state:</strong> to load ads, consent messages and Premium purchases, and to send usage statistics and crash reports.</li>
+            <li><strong>Google Play billing:</strong> to buy and restore Premium.</li>
+            <li><strong>Advertising ID, Android ad services and install referrer:</strong> used by AdMob and Firebase as described in section 3.</li>
+            <li><strong>Background work</strong> (wake lock and Android’s job scheduler): so that Android can run the optional status check reliably.</li>
+          </ul>
+        </section>
+
+        <section id="legal">
+          <h2>6. Legal bases (EEA, UK and Switzerland)</h2>
+          <ul>
+            <li><strong>Consent:</strong> storing and reading information on your device for advertising, and personalised advertising.</li>
+            <li><strong>Legitimate interests:</strong> showing ads that fund the free version within the limits of your choices; preventing fraud; keeping the app stable and secure through crash reports; understanding how the app is used in aggregate; and answering your messages.</li>
+            <li><strong>Performance of a contract:</strong> processing and restoring your Premium purchase.</li>
+          </ul>
+        </section>
+
+        <section id="retention">
+          <h2>7. How long information is kept</h2>
+          <ul>
+            <li><strong>Data on your device:</strong> until you delete it, clear the app’s storage or uninstall the app. Saved photos and videos stay in your gallery until you delete them.</li>
+            <li><strong>Consent choices:</strong> on your device until you change them or clear the app’s data. Google may ask you again when required, for example when its list of ad partners changes.</li>
+            <li><strong>Crash reports:</strong> 90 days (Firebase Crashlytics).</li>
+            <li><strong>Usage statistics:</strong> user-level data is kept by Google Analytics for Firebase for no more than 14 months.</li>
+            <li><strong>Advertising data:</strong> according to Google’s policies.</li>
+            <li><strong>Support emails:</strong> only as long as needed to resolve your request and follow up on it.</li>
+          </ul>
+        </section>
+
+        <section id="sharing">
+          <h2>8. Sharing and sale of information</h2>
+          <p>We do not sell your personal information for money. Apart from the Google services described above, which process it to provide their services, we do not share it with anyone, unless we are required to by law.</p>
+        </section>
+
+        <section id="transfers">
+          <h2>9. International transfers</h2>
+          <p>Google may process information on servers in the United States and other countries. Google relies on legal safeguards for these transfers, such as the European Commission’s Standard Contractual Clauses and the EU–US Data Privacy Framework.</p>
+        </section>
+
+        <section id="security">
+          <h2>10. Security</h2>
+          <p>Information sent to Google services travels over encrypted connections (HTTPS). The app opens only the folder you grant, and keeps temporary copies in its private storage, deleting them regularly. No method of transmission or storage is completely secure, but we work to protect your information.</p>
+        </section>
+
+        <section id="rights">
+          <h2>11. Your rights</h2>
+          <p>Depending on where you live, you may have the right to access, correct or delete your personal data, to restrict or object to its processing, to data portability, to withdraw your consent at any time, and to opt out of targeted advertising or of the sale or sharing of personal information. We will never treat you differently for exercising these rights.</p>
+          <p>Because the app has no accounts and we keep no data on servers of our own, most of these rights are exercised directly on your device:</p>
+          <ul>
+            <li><strong>Ad consent and opt-out:</strong> <span class="path">Settings → Privacy → Ad privacy options</span>.</li>
+            <li><strong>Advertising ID:</strong> reset or delete it in your device settings.</li>
+            <li><strong>Data on your device:</strong> clear the app’s storage or uninstall the app.</li>
+          </ul>
+          <p>For anything else, including requests about data that Google processes for the app, write to <a href="mailto:composerastudio@gmail.com">composerastudio@gmail.com</a>. We will answer within the time limits set by law (generally one month, or 45 days for requests under US state laws). If you are in the EEA, the United Kingdom or Switzerland, you can also lodge a complaint with your <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener">data protection authority</a>.</p>
+        </section>
+
+        <section id="children">
+          <h2>12. Children</h2>
+          <p>The app is not directed at children under 13, or under the minimum age required in their country, and we do not knowingly collect personal information from them. If you believe that a child has given us personal information, contact us and we will delete it.</p>
+        </section>
+
+        <section id="support">
+          <h2>13. When you contact us</h2>
+          <p>If you tap <em>Contact support</em> in the app, your email app opens a message addressed to us. Besides what you write, the message is pre-filled with the app version, the Android version and your device’s manufacturer and model, to help us diagnose problems; you can edit or delete them before sending. We use your email address and message only to answer you.</p>
+        </section>
+
+        <section id="changes">
+          <h2>14. Changes to this policy</h2>
+          <p>We may update this policy when the app or the law changes. We will publish the new version on this page and update the “Last updated” date at the top. Where a change significantly affects how your information is handled, we will also let you know through the app or its Google Play listing.</p>
+        </section>
+
+        <section id="contact">
+          <h2>15. Contact</h2>
+          <p>If you have any questions about this policy or about your information, contact us:</p>
+          <p class="note">
+            <strong>Compose R.A Studio</strong><br />
+            Email: <a href="mailto:composerastudio@gmail.com">composerastudio@gmail.com</a>
+          </p>
+        </section>
+      </div>
+    </article>
+
+  </main>
+
+  <footer class="wrap">© 2026 Compose R.A Studio · All rights reserved</footer>
 
 </body>
 </html>
